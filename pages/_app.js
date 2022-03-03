@@ -1,7 +1,15 @@
-import '../styles/globals.css'
+import "../styles/globals.css";
+import { MantineProvider } from "@mantine/core";
+import AppShellContainer from "../components/AppShellContainer";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <MantineProvider>
+      <AppShellContainer>
+        <Component {...pageProps} />
+      </AppShellContainer>
+    </MantineProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;
