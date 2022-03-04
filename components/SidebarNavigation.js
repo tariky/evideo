@@ -1,6 +1,12 @@
 import { ThemeIcon, Group, Navbar, Text, UnstyledButton } from "@mantine/core";
 import Link from "next/link";
-import { IoHome, IoPricetag } from "react-icons/io5";
+import {
+  IoHome,
+  IoPricetag,
+  IoCart,
+  IoAnalyticsOutline,
+  IoCogOutline,
+} from "react-icons/io5";
 import { useState } from "react";
 
 const RouteItemSingle = ({ title, url, icon, color }) => {
@@ -9,14 +15,15 @@ const RouteItemSingle = ({ title, url, icon, color }) => {
       <UnstyledButton>
         <Group
           sx={(theme) => ({
-            padding: "1rem",
-            backgroundColor: theme.colors.gray[0],
+            padding: ".75rem",
             "&:hover": {
               backgroundColor: theme.colors.gray[1],
             },
           })}
         >
-          <ThemeIcon color={color}>{icon}</ThemeIcon>
+          <ThemeIcon size={"sm"} color={color}>
+            {icon}
+          </ThemeIcon>
           <Text>{title}</Text>
         </Group>
       </UnstyledButton>
@@ -31,15 +38,14 @@ const RouteItemNested = () => {
       <UnstyledButton onClick={() => setIsOpen(!isOpen)}>
         <Group
           sx={(theme) => ({
-            padding: "1rem",
-            backgroundColor: theme.colors.gray[0],
+            padding: ".75rem",
             "&:hover": {
               backgroundColor: theme.colors.gray[1],
             },
           })}
         >
-          <ThemeIcon color="blue">
-            <IoPricetag />
+          <ThemeIcon size={"sm"} color="blue">
+            <IoPricetag size={"12"} />
           </ThemeIcon>
           <Text>Proizvodi</Text>
         </Group>
@@ -50,7 +56,7 @@ const RouteItemNested = () => {
             <Text
               weight={700}
               sx={(theme) => ({
-                paddingLeft: "1rem",
+                paddingLeft: "1.5rem",
                 width: "100%",
               })}
             >
@@ -61,7 +67,7 @@ const RouteItemNested = () => {
             <Text
               weight={700}
               sx={(theme) => ({
-                paddingLeft: "1rem",
+                paddingLeft: "1.5rem",
                 width: "100%",
               })}
             >
@@ -77,14 +83,38 @@ const RouteItemNested = () => {
 export default function SidebarNavigation() {
   const routes = [
     {
-      title: "Komandna ploca",
+      title: "Komandna ploča",
       url: "/",
-      icon: <IoHome />,
+      icon: <IoHome size={"12"} />,
       color: "red",
+    },
+    {
+      title: "Prodaja",
+      url: "/",
+      icon: <IoCart size={"12"} />,
+      color: "green",
+    },
+    {
+      title: "Proizvodi",
+      url: "/products",
+      icon: <IoPricetag size={"12"} />,
+      color: "blue",
+    },
+    {
+      title: "Analitika",
+      url: "/",
+      icon: <IoAnalyticsOutline size={"12"} />,
+      color: "yellow",
+    },
+    {
+      title: "Postavke",
+      url: "/",
+      icon: <IoCogOutline size={"12"} />,
+      color: "dark",
     },
   ];
   return (
-    <Navbar width={{ base: 300 }} height={500}>
+    <Navbar width={{ base: 300 }}>
       {routes.map((route, index) => {
         return (
           <RouteItemSingle
@@ -96,8 +126,8 @@ export default function SidebarNavigation() {
           />
         );
       })}
-      {/* Dev only */}
-      <RouteItemNested />
+      {/* TODO: napraviti da nestovana navigacija moze biti prikazana za sada nek stoji ovako, ali treba napraviti prije pustanja MVP verzije */}
+      {/* <RouteItemNested /> */}
     </Navbar>
   );
 }
