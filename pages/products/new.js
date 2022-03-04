@@ -14,6 +14,12 @@ import { IoCloudUpload } from "react-icons/io5";
 
 export default function NewProduct() {
   // const [value, onChange] = useState("<p>Test</p>");
+
+  /* 
+  Svaka card sekcija ispod treba biti u odvojenoj komponenti i samo pomocu props spustati podatke
+  sve te komponente bi trebale biti dumb komponente - tj. da ne sadrzavaju nikakvu logiku vec
+  samo sluze za prikaz
+  */
   return (
     <Box>
       <Title order={2} mb={16}>
