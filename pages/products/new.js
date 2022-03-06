@@ -11,6 +11,7 @@ import {
   Divider,
   NumberInput,
   TextInput,
+  Alert
 } from "@mantine/core";
 import { useState, React } from "react";
 // import { RichTextEditor } from "@mantine/rte";
@@ -56,7 +57,10 @@ export default function NewProduct() {
                 <Checkbox mt={8} label="Cijena sa porezom" />
               </Grid.Col>
               <Grid.Col span={6}>
-                <TextInput label="Nabavna cijena" rightSection={<PricePerItem />} />
+                <TextInput
+                  label="Nabavna cijena"
+                  rightSection={<PricePerItem />}
+                />
               </Grid.Col>
             </Grid>
           </Card>
@@ -86,7 +90,7 @@ export default function NewProduct() {
         <Grid.Col span={4}>
           <Card shadow={"xs"}>
             <Select
-            label="Status"
+              label="Status"
               defaultValue="skica"
               data={[
                 {
@@ -99,6 +103,12 @@ export default function NewProduct() {
                 },
               ]}
             />
+            <Alert
+              color={"gray"}
+              mt={10}
+            >
+              Proizvode sa statusom "Skice" kupci ne mogu poruciti i vidjeti.
+            </Alert>
           </Card>
           <Card shadow={"xs"} mt={16}>
             <Title order={5} mb={16}>
