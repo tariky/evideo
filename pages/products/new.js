@@ -80,9 +80,10 @@ export default function NewProduct() {
             <Grid>
               <Grid.Col span={6}>
                 <NumberInput label="Komada na stanju" />
+                <Checkbox label="Ne prati kolicinsko stanje" mt={10} />
               </Grid.Col>
               <Grid.Col span={6}>
-                <TextInput label="Tezina proizvoda" />
+                <TextInput label="Tezina proizvoda" placeholder="u kilogramima" />
               </Grid.Col>
             </Grid>
           </Card>
