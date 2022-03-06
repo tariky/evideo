@@ -85,8 +85,8 @@ export default function NewProduct() {
         </Grid.Col>
         <Grid.Col span={4}>
           <Card shadow={"xs"}>
-            <Text>Status</Text>
             <Select
+            label="Status"
               defaultValue="skica"
               data={[
                 {
