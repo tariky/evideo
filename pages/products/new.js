@@ -7,10 +7,15 @@ import {
   Input,
   Select,
   Button,
+  Checkbox,
+  Divider,
+  NumberInput,
+  TextInput,
 } from "@mantine/core";
 import { useState, React } from "react";
 // import { RichTextEditor } from "@mantine/rte";
-import { IoCloudUpload } from "react-icons/io5";
+import { IoCloudUpload, IoSave } from "react-icons/io5";
+import PricePerItem from "../../components/PricePerItem";
 
 export default function NewProduct() {
   // const [value, onChange] = useState("<p>Test</p>");
@@ -29,12 +34,10 @@ export default function NewProduct() {
         <Grid.Col span={8}>
           <Card shadow={"xs"}>
             <Box>
-              <Text>Naziv</Text>
-              <Input />
-              <Text mt={10}>Opis</Text>
+              <TextInput label="Naziv" />
               {/* NextJS iz nekog razloga ima problem sa ucitavanjem RTE editora istraziti detaljnije ili ga zamjeniti alternativom... mozda samo input obicni staviti */}
               {/* <RichTextEditor value={value} onChange={onChange} /> */}
-              <Input />
+              <TextInput label="Opis" />
             </Box>
           </Card>
           <Card mt={16} shadow={"xs"}>
@@ -42,6 +45,42 @@ export default function NewProduct() {
             <Button fullWidth mt={16} leftIcon={<IoCloudUpload />}>
               Ucitaj fotografiju
             </Button>
+          </Card>
+          <Card shadow={"xs"} mt={16}>
+            <Title order={5} mb={16}>
+              Cijene
+            </Title>
+            <Grid gutter={16}>
+              <Grid.Col span={6}>
+                <TextInput label="Cijena" />
+                <Checkbox mt={8} label="Cijena sa porezom" />
+              </Grid.Col>
+              <Grid.Col span={6}>
+                <TextInput label="Nabavna cijena" rightSection={<PricePerItem />} />
+              </Grid.Col>
+            </Grid>
+          </Card>
+          <Card mt={16} shadow={"xs"}>
+            <Title order={5} mb={16}>
+              Skladište
+            </Title>
+            <Grid>
+              <Grid.Col span={6}>
+                <TextInput label="SKU" />
+              </Grid.Col>
+              <Grid.Col span={6}>
+                <TextInput label="Barcode" />
+              </Grid.Col>
+            </Grid>
+            <Divider my={16} />
+            <Grid>
+              <Grid.Col span={6}>
+                <NumberInput label="Komada na stanju" />
+              </Grid.Col>
+              <Grid.Col span={6}>
+                <TextInput label="Tezina proizvoda" />
+              </Grid.Col>
+            </Grid>
           </Card>
         </Grid.Col>
         <Grid.Col span={4}>
@@ -61,6 +100,40 @@ export default function NewProduct() {
               ]}
             />
           </Card>
+          <Card shadow={"xs"} mt={16}>
+            <Title order={5} mb={16}>
+              Organizacija
+            </Title>
+            <Select
+              label="Kategorija"
+              placeholder="Pick one"
+              data={[
+                { value: "react", label: "React" },
+                { value: "ng", label: "Angular" },
+                { value: "svelte", label: "Svelte" },
+                { value: "vue", label: "Vue" },
+              ]}
+            />
+            <Select
+              label="Dobavljac"
+              placeholder="Pick one"
+              data={[
+                { value: "react", label: "React" },
+                { value: "ng", label: "Angular" },
+                { value: "svelte", label: "Svelte" },
+                { value: "vue", label: "Vue" },
+              ]}
+            />
+          </Card>
+          <Button
+            mt={16}
+            color="green"
+            fullWidth
+            size="lg"
+            leftIcon={<IoSave />}
+          >
+            Spremi
+          </Button>
         </Grid.Col>
       </Grid>
     </Box>
